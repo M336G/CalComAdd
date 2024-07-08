@@ -1,6 +1,6 @@
 displayName = Calamity Community Addons
 author = M336
-version = 0.1
+version = 1.0.1
 modReferences = CalamityMod
 homepage = https://discord.gg/kE3p2u2rAr
 buildIgnore = *.csproj, lib\*, bin\*, obj\*, README.md

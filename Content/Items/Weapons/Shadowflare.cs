@@ -1,30 +1,38 @@
-using CalamityMod.Items;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using CalamityMod.Items;
 
-namespace CalComAdd.Content.Items
+namespace CalComAdd.Content.Items.Weapons
 {
 	public class Shadowflare : ModItem
 	{
-		// The Display Name and Tooltip of this item can be edited in the 'Localization/en-US_Mods.CalComAdd.hjson' file.
 		public override void SetDefaults()
 		{
-			Item.damage = 19;
-			Item.crit = 7;
-			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;
 			Item.height = 40;
+            Item.scale = 1.1f;
+
+			Item.damage = 19;
+			Item.crit = 7;
+			Item.knockBack = 6f;
+
+			Item.DamageType = DamageClass.Melee;
+
+            Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 30;
 			Item.useAnimation = 30;
-			Item.useStyle = ItemUseStyleID.Swing;
+			
 			Item.shoot = ProjectileID.LightsBane;
-			Item.knockBack = 6;
+            Item.shootSpeed = 30f;
+
 			Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
 			Item.rare = ItemRarityID.Blue;
+
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
-			Item.scale = 1.1f;
 		}
 
 		public override void AddRecipes()
@@ -35,5 +43,10 @@ namespace CalComAdd.Content.Items
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetAdjustedItemScale(Item));
+            return false;
+        }
 	}
 }

@@ -7,12 +7,12 @@ Items: {
 	}
 
 	ShadowEdge: {
-		DisplayName: Shadow Edge
+		DisplayName: Épée de l'ombre
 		Tooltip: ""
 	}
 
 	Turnip: {
-		DisplayName: Turnip
-		Tooltip: A sacred vegetable...
+		DisplayName: Navet
+		Tooltip: Un légume sacré...
 	}
 }
